@@ -1,16 +1,17 @@
 package ejb;
 
 import jakarta.ejb.Stateless;
+import dao.UserDAO;
+import model.User;
 
 @Stateless
 public class UserServiceBean {
 
-    public boolean login(String username, String password){
+    public User login(String username, String password){
 
-        if(username.equals("admin") && password.equals("1234")){
-            return true;
-        }
+        UserDAO dao = new UserDAO();
 
-        return false;
+        return dao.checkLogin(username, password);
+
     }
 }
