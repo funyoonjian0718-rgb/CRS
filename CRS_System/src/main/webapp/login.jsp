@@ -37,7 +37,7 @@ if(error != null){
 
 <div class="mb-3">
 <label>Username</label>
-<input type="text" name="username" class="form-control">									<%--admin is admin123 officer is officer123 --%>
+<input type="text" name="username" class="form-control">									<%--admin is admin123 officer is officer123 hehe balls--%>
 </div>
 <div class="mb-3">
 <label>Password</label>
