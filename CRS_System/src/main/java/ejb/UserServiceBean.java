@@ -38,6 +38,13 @@ public class UserServiceBean {
 
     }
 
+    public User getUserById(int id){
+
+        UserDAO dao = new UserDAO();
+        return dao.getUserById(id);
+
+    }
+    
     public void deactivateUser(int id){
 
         UserDAO dao = new UserDAO();

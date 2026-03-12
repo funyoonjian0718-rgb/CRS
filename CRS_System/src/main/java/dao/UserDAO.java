@@ -48,7 +48,7 @@ public class UserDAO {
         return user;
     }
 
-    // GET ALL USERS
+    // GET ALL USERS (DONE)
     public List<User> getAllUsers(){
 
         List<User> users = new ArrayList<>();
@@ -83,7 +83,7 @@ public class UserDAO {
         return users;
     }
 
-    // ADD USER
+    // ADD USER (DONE)
     public void addUser(User user){
 
         try{
@@ -106,7 +106,7 @@ public class UserDAO {
 
     }
 
-    // UPDATE USER
+    // UPDATE USER (SAVES THE DATE INTO THE THE DATABASE AFTER THE CODE BELOW UPDATE IT IN EDIT_USER.JSP)
     public void updateUser(User user){
 
         try{
@@ -128,8 +128,42 @@ public class UserDAO {
         }
 
     }
+    
+    // ACTUALLY UPDATES THE USER AFTER PRESSING THE UPDATE BUTTON
+    public User getUserById(int id){
 
-    // DEACTIVATE USER
+        User user = null;
+
+        try{
+
+            String sql = "SELECT * FROM users WHERE user_id=?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+
+                user = new User();
+
+                user.setUserId(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setRole(rs.getString("role"));
+                user.setEmail(rs.getString("email"));
+                user.setStatus(rs.getString("status"));
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+    
+
+    // DEACTIVATE USER (DONE) 
     public void deactivateUser(int id){
 
         try{

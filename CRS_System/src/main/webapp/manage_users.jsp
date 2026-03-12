@@ -85,16 +85,16 @@
 
                         <td>
 
-                            <a href="editUser?id=<%=u.getUserId()%>" 
-                               class="btn btn-warning btn-sm">
-                               Edit
-                            </a>
+							<a href="editUser?id=<%=u.getUserId()%>"
+							   class="btn btn-warning btn-sm">
+							   Edit
+							</a>
 
-                            <a href="deactivateUser?id=<%=u.getUserId()%>" 
-                               class="btn btn-danger btn-sm"
-                               onclick="return confirm('Deactivate this user?')">
-                               Deactivate
-                            </a>
+                           <a href="deactivateUser?id=<%=u.getUserId()%>"
+							   class="btn btn-danger btn-sm"
+							   onclick="return confirm('Deactivate this user?')">
+							   Deactivate
+							</a>
 
                         </td>
 
