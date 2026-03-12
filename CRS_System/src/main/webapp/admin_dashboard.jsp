@@ -25,7 +25,7 @@ if(session == null || session.getAttribute("username") == null){
 <div class="row">
 
 <div class="col-md-4 mb-3">
-<a href="viewUsers" class="btn btn-secondary w-100">Manage Users</a>
+<button class="btn btn-primary w-100">Manage Users</button>
 </div>
 
 <div class="col-md-4 mb-3">
