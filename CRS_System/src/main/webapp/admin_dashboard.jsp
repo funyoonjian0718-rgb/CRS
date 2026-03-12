@@ -20,7 +20,7 @@ if(session == null || session.getAttribute("username") == null){
 
 <div class="container mt-5">
 
-<h2 class="text-center mb-4">Course Administrator Dashboard</h2>
+<h2 class="text-center mb-4">Course Administrator Dashboard</h2>   <%--allhamdullilah --%>
 
 <div class="row">
 
