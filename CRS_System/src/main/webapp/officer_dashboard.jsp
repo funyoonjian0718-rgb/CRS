@@ -25,6 +25,13 @@ if(session == null || session.getAttribute("username") == null){
 
 <div class="row">
 
+<!-- USER MANAGEMENT -->
+
+<div class="col-md-4 mb-3">
+<a href="viewUsers" class="btn btn-primary w-100">Manage Users</a>
+</div>
+
+
 <!-- Eligibility -->
 
 <div class="col-md-4 mb-3">

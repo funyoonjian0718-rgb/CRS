@@ -20,10 +20,24 @@
 
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
 
-			<a href="admin_dashboard.jsp" class="btn btn-secondary btn-sm">
-                 Back to Dashboard
-            </a>
-
+			<%--check session token to see what are the user type --%>
+			<%
+			String role = (String) session.getAttribute("role");
+			
+			String dashboard = "login.jsp";
+			
+			if(role != null){
+			    if(role.equals("course_admin")){
+			        dashboard = "admin_dashboard.jsp";
+			    } else if(role.equals("academic_officer")){
+			        dashboard = "officer_dashboard.jsp";
+			    }
+			}
+			%>
+			
+			<a href="<%=dashboard%>" class="btn btn-secondary btn-sm">
+			    Back to Dashboard
+			</a>
             <h4 class="mb-0">Manage Users</h4>
             
             <a href="add_user.jsp" class="btn btn-success btn-sm">
