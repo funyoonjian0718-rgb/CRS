@@ -20,8 +20,12 @@
 
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
 
-            <h4 class="mb-0">Manage Users</h4>
+			<a href="admin_dashboard.jsp" class="btn btn-secondary btn-sm">
+                 Back to Dashboard
+            </a>
 
+            <h4 class="mb-0">Manage Users</h4>
+            
             <a href="add_user.jsp" class="btn btn-success btn-sm">
                 + Add User
             </a>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
 if(session == null || session.getAttribute("username") == null){
     response.sendRedirect("login.jsp");
@@ -20,32 +21,37 @@ if(session == null || session.getAttribute("username") == null){
 
 <div class="container mt-5">
 
-<h2 class="text-center mb-4">Course Administrator Dashboard</h2>   <%--allhamdullilah --%>
+<h2 class="text-center mb-4">Course Administrator Dashboard</h2>
 
 <div class="row">
 
+<!-- USER MANAGEMENT -->
+
 <div class="col-md-4 mb-3">
-<a href="viewUsers" class="btn btn-secondary w-100">Manage Users</a>
+<a href="viewUsers" class="btn btn-primary w-100">Manage Users</a>
+</div>
+
+
+<!-- ELIGIBILITY MANAGEMENT -->
+
+<div class="col-md-4 mb-3">
+<a href="checkEligibility" class="btn btn-info w-100">Check Student Eligibility</a>
 </div>
 
 <div class="col-md-4 mb-3">
-<button class="btn btn-success w-100">Create Recovery Plan</button>
+<a href="enrollStudent" class="btn btn-secondary w-100">Enroll Student to Recovery</a>
 </div>
 
-<div class="col-md-4 mb-3">
-<button class="btn btn-warning w-100">Update Recovery Plan</button>
-</div>
+<!-- REPORTS -->
 
 <div class="col-md-4 mb-3">
-<button class="btn btn-info w-100">Track Recovery Progress</button>
+<a href="viewReports" class="btn btn-dark w-100">Academic Performance Reports</a>
 </div>
 
-<div class="col-md-4 mb-3">
-<button class="btn btn-secondary w-100">Send Notifications</button>
-</div>
+<!-- LOGOUT -->
 
 <div class="col-md-4 mb-3">
-<a href="logout" class="btn btn-danger w-100">Logout</a>
+<a href="logout" class="btn btn-outline-danger w-100">Logout</a>
 </div>
 
 </div>

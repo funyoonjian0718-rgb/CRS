@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%
 if(session == null || session.getAttribute("username") == null){
     response.sendRedirect("login.jsp");
@@ -24,24 +25,54 @@ if(session == null || session.getAttribute("username") == null){
 
 <div class="row">
 
+<!-- Eligibility -->
+
 <div class="col-md-4 mb-3">
-<button class="btn btn-primary w-100">View Students</button>
+<a href="checkEligibility" class="btn btn-primary w-100">
+Check Student Eligibility
+</a>
 </div>
 
 <div class="col-md-4 mb-3">
-<button class="btn btn-success w-100">Check Eligibility</button>
+<a href="enrollStudent" class="btn btn-success w-100">
+Enroll Student to Recovery
+</a>
+</div>
+
+<!-- Academic Reporting -->
+
+<div class="col-md-4 mb-3">
+<a href="viewReports" class="btn btn-warning w-100">
+Academic Performance Reports
+</a>
+</div>
+
+<!-- Recovery Plans -->
+
+<div class="col-md-4 mb-3">
+<a href="createRecoveryPlan" class="btn btn-info w-100">
+Create Recovery Plan
+</a>
 </div>
 
 <div class="col-md-4 mb-3">
-<button class="btn btn-warning w-100">Generate Academic Report</button>
+<a href="updateRecoveryPlan" class="btn btn-secondary w-100">
+Update Recovery Plan
+</a>
 </div>
 
 <div class="col-md-4 mb-3">
-<button class="btn btn-info w-100">View Recovery Progress</button>
+<a href="trackRecoveryProgress" class="btn btn-dark w-100">
+Track Recovery Progress
+</a>
 </div>
 
+<!-- Logout -->
+
 <div class="col-md-4 mb-3">
-<a href="logout" class="btn btn-danger w-100">Logout</a>
+<a href="logout" class="btn btn-danger w-100">
+Logout
+</a>
 </div>
 
 </div>
