@@ -38,10 +38,6 @@ if(session == null || session.getAttribute("username") == null){
 <a href="checkEligibility" class="btn btn-info w-100">Check Student Eligibility</a>
 </div>
 
-<div class="col-md-4 mb-3">
-<a href="enrollStudent" class="btn btn-secondary w-100">Enroll Student to Recovery</a>
-</div>
-
 <!-- REPORTS -->
 
 <div class="col-md-4 mb-3">

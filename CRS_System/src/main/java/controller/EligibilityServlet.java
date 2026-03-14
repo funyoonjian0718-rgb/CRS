@@ -26,7 +26,7 @@ public class EligibilityServlet extends HttpServlet {
 
         System.out.println("Eligible students count: " + eligibleList.size());
         System.out.println("Ineligible students count: " + ineligibleList.size());
-        System.out.println("NEW VERSION1.0 RUNNING");
+        System.out.println("NEW VERSION 3.0 RUNNING");
         
         request.setAttribute("eligibleStudents", eligibleList);
         request.setAttribute("students", ineligibleList);

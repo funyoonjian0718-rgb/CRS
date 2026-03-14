@@ -99,6 +99,7 @@ No eligible students found.
 <th>CGPA</th>
 <th>Failed Courses</th>
 <th>Status</th>
+<th>Action</th>
 </tr>
 </thead>
 
@@ -122,6 +123,16 @@ for(Student s : list){
 Not Eligible
 </span>
 </td>
+
+<td>
+<form action="enrollStudent" method="post">
+<input type="hidden" name="studentId" value="<%= s.getStudentId() %>">
+<button class="btn btn-warning btn-sm">
+Enroll Recovery
+</button>
+</form>
+</td>
+
 </tr>
 
 <%
