@@ -2,51 +2,43 @@ package model;
 
 public class Student {
 
-    private int studentId;
+    private String studentId;
     private String studentName;
     private double cgpa;
     private int failedCourses;
-    private boolean eligible;
 
-    public Student(){}
+    public Student() {
+    }
 
-    public int getStudentId(){
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId){
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
-    public String getStudentName(){
+    public String getStudentName() {
         return studentName;
     }
 
-    public void setStudentName(String studentName){
+    public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
 
-    public double getCgpa(){
+    public double getCgpa() {
         return cgpa;
     }
 
-    public void setCgpa(double cgpa){
+    public void setCgpa(double cgpa) {
         this.cgpa = cgpa;
     }
 
-    public int getFailedCourses(){
+    public int getFailedCourses() {
         return failedCourses;
     }
 
-    public void setFailedCourses(int failedCourses){
+    public void setFailedCourses(int failedCourses) {
         this.failedCourses = failedCourses;
-    }
-
-    public boolean isEligible(){
-        return eligible;
-    }
-
-    public void setEligible(boolean eligible){
-        this.eligible = eligible;
     }
 }
