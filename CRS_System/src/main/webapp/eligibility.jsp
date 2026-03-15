@@ -1,180 +1,257 @@
 <%@ page import="java.util.*,model.Student" %>
+
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Student Eligibility Check</title>
+    <title>Student Eligibility Check</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
+        }
+
+        .dashboard-card{
+            border-radius:12px;
+        }
+
+    </style>
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-<div class="card shadow">
+        <div class="card dashboard-card shadow">
 
-<div class="card-header bg-primary text-white">
-<h4 class="mb-0">Student Eligibility Check</h4>
-</div>
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Student Eligibility Check</h4>
+            </div>
 
-<div class="card-body">
+            <div class="card-body">
 
-<!-- ELIGIBLE STUDENTS TABLE -->
 
-<h5 class="mb-3 text-success">Students Eligible for Progression</h5>
+                <!-- ============================= -->
+                <!-- ELIGIBLE STUDENTS TABLE -->
+                <!-- ============================= -->
 
-<table class="table table-striped table-hover">
+                <h5 class="mb-3 text-success">
+                    Students Eligible for Progression
+                </h5>
 
-<thead class="table-success">
-<tr>
-<th>Student ID</th>
-<th>Name</th>
-<th>CGPA</th>
-<th>Failed Courses</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
+                <table class="table table-striped table-hover">
 
-<tbody>
+                    <thead class="table-success">
 
-<%
-List<Student> eligibleList = (List<Student>) request.getAttribute("eligibleStudents");
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>CGPA</th>
+                            <th>Failed Courses</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
 
-if(eligibleList != null && !eligibleList.isEmpty()){
-for(Student s : eligibleList){
-%>
+                    </thead>
 
-<tr>
-<td><%= s.getStudentId() %></td>
-<td><%= s.getStudentName() %></td>
-<td><%= s.getCgpa() %></td>
-<td><%= s.getFailedCourses() %></td>
+                    <tbody>
 
-<td>
-<span class="badge bg-success">
-Eligible
-</span>
-</td>
+                        <%
+                            List<Student> eligibleList =
+                                (List<Student>) request.getAttribute("eligibleStudents");
 
-<td>
-<form action="registerStudent" method="post">
-<input type="hidden" name="studentId" value="<%= s.getStudentId() %>">
-<button class="btn btn-success btn-sm">Register</button>
-</form>
-</td>
+                            if(eligibleList != null && !eligibleList.isEmpty()){
+                                for(Student s : eligibleList){
+                        %>
 
-</tr>
+                        <tr>
 
-<%
-}
-}else{
-%>
+                            <td><%= s.getStudentId() %></td>
+                            <td><%= s.getStudentName() %></td>
+                            <td><%= s.getCgpa() %></td>
+                            <td><%= s.getFailedCourses() %></td>
 
-<tr>
-<td colspan="6" class="text-center text-muted">
-No eligible students found.
-</td>
-</tr>
+                            <td>
+                                <span class="badge bg-success">
+                                    Eligible
+                                </span>
+                            </td>
 
-<% } %>
+                            <td>
 
-</tbody>
-</table>
+                                <form action="registerStudent" method="post">
 
-<hr>
+                                    <input
+                                        type="hidden"
+                                        name="studentId"
+                                        value="<%= s.getStudentId() %>"
+                                    >
 
-<!-- NOT ELIGIBLE STUDENTS TABLE -->
+                                    <button class="btn btn-success btn-sm">
+                                        Register
+                                    </button>
 
-<h5 class="mb-3 text-danger">Students Not Eligible for Progression</h5>
+                                </form>
 
-<table class="table table-striped table-hover">
+                            </td>
 
-<thead class="table-dark">
-<tr>
-<th>Student ID</th>
-<th>Name</th>
-<th>CGPA</th>
-<th>Failed Courses</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
+                        </tr>
 
-<tbody>
+                        <%
+                                }
+                            } else {
+                        %>
 
-<%
-List<Student> list = (List<Student>) request.getAttribute("students");
+                        <tr>
 
-if(list != null && !list.isEmpty()){
-for(Student s : list){
-%>
+                            <td colspan="6" class="text-center text-muted">
+                                No eligible students found.
+                            </td>
 
-<tr>
-<td><%= s.getStudentId() %></td>
-<td><%= s.getStudentName() %></td>
-<td><%= s.getCgpa() %></td>
-<td><%= s.getFailedCourses() %></td>
+                        </tr>
 
-<td>
-<span class="badge bg-danger">
-Not Eligible
-</span>
-</td>
+                        <% } %>
 
-<td>
-<form action="enrollStudent" method="post">
-<input type="hidden" name="studentId" value="<%= s.getStudentId() %>">
-<button class="btn btn-warning btn-sm">
-Enroll Recovery
-</button>
-</form>
-</td>
+                    </tbody>
 
-</tr>
+                </table>
 
-<%
-}
-}else{
-%>
 
-<tr>
-<td colspan="5" class="text-center text-muted">
-No students found.
-</td>
-</tr>
 
-<% } %>
+                <hr>
 
-</tbody>
 
-</table>
 
-<div class="mt-3">
-			<%--check session token to see what are the user type --%>
-			<%
-			String role = (String) session.getAttribute("role");
-			
-			String dashboard = "login.jsp";
-			
-			if(role != null){
-			    if(role.equals("course_admin")){
-			        dashboard = "admin_dashboard.jsp";
-			    } else if(role.equals("academic_officer")){
-			        dashboard = "officer_dashboard.jsp";
-			    }
-			}
-			%>
-			<a href="<%=dashboard%>" class="btn btn-secondary btn-sm">
-			    Back to Dashboard
-			</a>
-</div>
+                <!-- ============================= -->
+                <!-- NOT ELIGIBLE STUDENTS TABLE -->
+                <!-- ============================= -->
 
-</div>
-</div>
-</div>
+                <h5 class="mb-3 text-danger">
+                    Students Not Eligible for Progression
+                </h5>
+
+                <table class="table table-striped table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>CGPA</th>
+                            <th>Failed Courses</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <%
+                            List<Student> list =
+                                (List<Student>) request.getAttribute("students");
+
+                            if(list != null && !list.isEmpty()){
+                                for(Student s : list){
+                        %>
+
+                        <tr>
+
+                            <td><%= s.getStudentId() %></td>
+                            <td><%= s.getStudentName() %></td>
+                            <td><%= s.getCgpa() %></td>
+                            <td><%= s.getFailedCourses() %></td>
+
+                            <td>
+                                <span class="badge bg-danger">
+                                    Not Eligible
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <form action="enrollStudent" method="post">
+
+                                    <input
+                                        type="hidden"
+                                        name="studentId"
+                                        value="<%= s.getStudentId() %>"
+                                    >
+
+                                    <button class="btn btn-warning btn-sm">
+                                        Enroll Recovery
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                        <%
+                                }
+                            } else {
+                        %>
+
+                        <tr>
+
+                            <td colspan="5" class="text-center text-muted">
+                                No students found.
+                            </td>
+
+                        </tr>
+
+                        <% } %>
+
+                    </tbody>
+
+                </table>
+
+
+
+                <!-- ============================= -->
+                <!-- BACK BUTTON -->
+                <!-- ============================= -->
+
+                <div class="mt-3">
+
+                    <%-- check session token to see what are the user type --%>
+
+                    <%
+                        String role = (String) session.getAttribute("role");
+
+                        String dashboard = "login.jsp";
+
+                        if(role != null){
+                            if(role.equals("course_admin")){
+                                dashboard = "admin_dashboard.jsp";
+                            }
+                            else if(role.equals("academic_officer")){
+                                dashboard = "officer_dashboard.jsp";
+                            }
+                        }
+                    %>
+
+                    <a href="<%=dashboard%>" class="btn btn-secondary btn-sm">
+                        Back to Dashboard
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

@@ -1,112 +1,189 @@
 <%@ page import="model.User" %>
 
 <%
-User u = (User) request.getAttribute("user");
+    User u = (User) request.getAttribute("user");
 %>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Edit User</title>
+    <title>Edit User</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
+        }
+
+        .dashboard-card{
+            border-radius:12px;
+        }
+
+    </style>
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-<div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-<div class="col-md-6">
+            <div class="col-md-6">
 
-<div class="card shadow">
+                <div class="card dashboard-card shadow">
 
-<div class="card-header bg-warning text-dark">
-<h4>Edit User</h4>
-</div>
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0">Edit User</h4>
+                    </div>
 
-<div class="card-body">
+                    <div class="card-body">
 
-<form action="updateUser" method="post">
+                        <form action="updateUser" method="post">
 
-<input type="hidden" name="userId" value="<%=u.getUserId()%>">
+                            <!-- Hidden User ID -->
 
-<div class="mb-3">
-<label class="form-label">Username</label>
-<input type="text" name="username" class="form-control"
-       value="<%=u.getUsername()%>" required>
-</div>
+                            <input
+                                type="hidden"
+                                name="userId"
+                                value="<%=u.getUserId()%>"
+                            >
 
-<div class="mb-3">
-<label class="form-label">Email</label>
-<input type="email" name="email" class="form-control"
-       value="<%=u.getEmail()%>" required>
-</div>
 
-<div class="mb-3">
-<label class="form-label">Role</label>
+                            <!-- ============================= -->
+                            <!-- Username -->
+                            <!-- ============================= -->
 
-<select name="role" class="form-select">
+                            <div class="mb-3">
 
-<option value="course_admin"
-<%= u.getRole().equals("course_admin") ? "selected" : "" %>>
-Course Admin
-</option>
+                                <label class="form-label">Username</label>
 
-<option value="academic_officer"
-<%= u.getRole().equals("academic_officer") ? "selected" : "" %>>
-Academic Officer
-</option>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control"
+                                    value="<%=u.getUsername()%>"
+                                    required
+                                >
 
-</select>
+                            </div>
 
-</div>
 
-<div class="mb-3">
-<label class="form-label">Status</label>
 
-<select name="status" class="form-select">
+                            <!-- ============================= -->
+                            <!-- Email -->
+                            <!-- ============================= -->
 
-<option value="active"
-<%= u.getStatus().equals("active") ? "selected" : "" %>>
-Active
-</option>
+                            <div class="mb-3">
 
-<option value="inactive"
-<%= u.getStatus().equals("inactive") ? "selected" : "" %>>
-Inactive
-</option>
+                                <label class="form-label">Email</label>
 
-</select>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    value="<%=u.getEmail()%>"
+                                    required
+                                >
 
-</div>
+                            </div>
 
-<div class="d-grid gap-2">
 
-<button type="submit" class="btn btn-primary">
-Update User
-</button>
 
-<a href="viewUsers" class="btn btn-secondary">
-Cancel
-</a>
+                            <!-- ============================= -->
+                            <!-- Role -->
+                            <!-- ============================= -->
 
-</div>
+                            <div class="mb-3">
 
-</form>
+                                <label class="form-label">Role</label>
 
-</div>
+                                <select name="role" class="form-select">
 
-</div>
+                                    <option
+                                        value="course_admin"
+                                        <%= u.getRole().equals("course_admin") ? "selected" : "" %>
+                                    >
+                                        Course Admin
+                                    </option>
 
-</div>
+                                    <option
+                                        value="academic_officer"
+                                        <%= u.getRole().equals("academic_officer") ? "selected" : "" %>
+                                    >
+                                        Academic Officer
+                                    </option>
 
-</div>
+                                </select>
 
-</div>
+                            </div>
+
+
+
+                            <!-- ============================= -->
+                            <!-- Status -->
+                            <!-- ============================= -->
+
+                            <div class="mb-3">
+
+                                <label class="form-label">Status</label>
+
+                                <select name="status" class="form-select">
+
+                                    <option
+                                        value="active"
+                                        <%= u.getStatus().equals("active") ? "selected" : "" %>
+                                    >
+                                        Active
+                                    </option>
+
+                                    <option
+                                        value="inactive"
+                                        <%= u.getStatus().equals("inactive") ? "selected" : "" %>
+                                    >
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- ============================= -->
+                            <!-- Buttons -->
+                            <!-- ============================= -->
+
+                            <div class="d-grid gap-2">
+
+                                <button type="submit" class="btn btn-primary">
+                                    Update User
+                                </button>
+
+                                <a href="viewUsers" class="btn btn-secondary">
+                                    Cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

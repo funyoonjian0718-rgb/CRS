@@ -1,90 +1,221 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 
 <%
-if(session == null || session.getAttribute("username") == null){
-    response.sendRedirect("login.jsp");
-}
+    if(session == null || session.getAttribute("username") == null){
+        response.sendRedirect("login.jsp");
+    }
 %>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Academic Officer Dashboard</title>
+    <title>Academic Officer Dashboard</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+
+        body{
+            background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
+        }
+
+        .dashboard-card{
+            transition:0.3s;
+            border-radius:12px;
+        }
+
+        .dashboard-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 10px 20px rgba(0,0,0,0.15);
+        }
+
+    </style>
 
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-<h2 class="text-center mb-4">Academic Officer Dashboard</h2>
+        <h2 class="text-center mb-5 fw-bold">
+            Academic Officer Dashboard
+        </h2>
 
-<div class="row">
-
-<!-- USER MANAGEMENT -->
-
-<div class="col-md-4 mb-3">
-<a href="viewUsers" class="btn btn-primary w-100">Manage Users</a>
-</div>
+        <div class="row g-4 justify-content-center">
 
 
-<!-- Eligibility -->
+            <!-- ============================= -->
+            <!-- USER MANAGEMENT -->
+            <!-- ============================= -->
 
-<div class="col-md-4 mb-3">
-<a href="checkEligibility" class="btn btn-primary w-100">
-Check Student Eligibility
-</a>
-</div>
+            <div class="col-md-4">
 
-<div class="col-md-4 mb-3">
-<a href="enrollStudent" class="btn btn-success w-100">
-Enroll Student to Recovery
-</a>
-</div>
+                <div class="card dashboard-card shadow text-center p-4">
 
-<!-- Academic Reporting -->
+                    <h5 class="mb-3">User Management</h5>
 
-<div class="col-md-4 mb-3">
-<a href="viewReports" class="btn btn-warning w-100">
-Academic Performance Reports
-</a>
-</div>
+                    <a href="viewUsers" class="btn btn-primary w-100">
+                        Manage Users
+                    </a>
 
-<!-- Recovery Plans -->
+                </div>
 
-<div class="col-md-4 mb-3">
-<a href="createRecoveryPlan" class="btn btn-info w-100">
-Create Recovery Plan
-</a>
-</div>
+            </div>
 
-<div class="col-md-4 mb-3">
-<a href="updateRecoveryPlan" class="btn btn-secondary w-100">
-Update Recovery Plan
-</a>
-</div>
 
-<div class="col-md-4 mb-3">
-<a href="trackRecoveryProgress" class="btn btn-dark w-100">
-Track Recovery Progress
-</a>
-</div>
 
-<!-- Logout -->
+            <!-- ============================= -->
+            <!-- Eligibility -->
+            <!-- ============================= -->
+            <div class="col-md-4">
 
-<div class="col-md-4 mb-3">
-<a href="logout" class="btn btn-danger w-100">
-Logout
-</a>
-</div>
+                <div class="card dashboard-card shadow text-center p-4">
 
-</div>
+                    <h5 class="mb-3">Eligibility Check</h5>
 
-</div>
+                    <a href="checkEligibility" class="btn btn-info w-100">
+                        Eligibility & Enrollment
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- ACADEMIC PERFORMANCE REPORT -->
+            <!-- (REPLACED WITH DROPDOWN) -->
+            <!-- ============================= -->
+
+            <div class="col-md-4">
+
+                <div class="card dashboard-card shadow text-center p-4">
+
+                    <h5 class="mb-3">Academic Report</h5>
+
+                    <form action="viewPerformanceReport">
+
+                        <select name="student_id" class="form-select mb-3" required>
+
+                            <option value="">Select Student</option>
+
+                            <%
+                                java.sql.Connection conn = util.DatabaseConnection.getConnection();
+                                java.sql.Statement stmt = conn.createStatement();
+                                java.sql.ResultSet rs = stmt.executeQuery(
+                                    "SELECT student_id, name FROM students"
+                                );
+
+                                while(rs.next()){
+                            %>
+
+                                <option value="<%=rs.getString("student_id")%>">
+                                    <%=rs.getString("student_id")%> -
+                                    <%=rs.getString("name")%>
+                                </option>
+
+                            <%
+                                }
+                            %>
+
+                        </select>
+
+                        <button class="btn btn-dark w-100">
+                            Generate Report
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- RECOVERY PLAN -->
+            <!-- ============================= -->
+
+            <div class="col-md-4">
+
+                <div class="card dashboard-card shadow text-center p-4">
+
+                    <h5 class="mb-3">Create Recovery Plan</h5>
+
+                    <a href="createRecoveryPlan" class="btn btn-info w-100">
+                        Create Recovery Plan
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- UPDATE RECOVERY PLAN -->
+            <!-- ============================= -->
+
+            <div class="col-md-4">
+
+                <div class="card dashboard-card shadow text-center p-4">
+
+                    <h5 class="mb-3">Update Recovery Plan</h5>
+
+                    <a href="updateRecoveryPlan" class="btn btn-secondary w-100">
+                        Update Recovery Plan
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- TRACK RECOVERY PROGRESS -->
+            <!-- ============================= -->
+
+            <div class="col-md-4">
+
+                <div class="card dashboard-card shadow text-center p-4">
+
+                    <h5 class="mb-3">Track Recovery Progress</h5>
+
+                    <a href="trackRecoveryProgress" class="btn btn-dark w-100">
+                        Track Recovery Progress
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ============================= -->
+        <!-- LOGOUT -->
+        <!-- ============================= -->
+
+        <div class="text-center mt-5">
+
+            <a href="logout" class="btn btn-outline-danger px-5">
+                Logout
+            </a>
+
+        </div>
+
+
+    </div>
 
 </body>
+
 </html>
