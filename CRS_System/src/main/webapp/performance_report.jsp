@@ -144,7 +144,20 @@
 
                 </div>
 
-
+				<!-- ============================= -->
+				<!-- Send Email Button -->
+				<!-- ============================= -->
+				
+				<form action="sendReportEmail" method="post">
+				
+				    <input type="hidden" name="studentId" value="<%=studentId%>">
+				
+				    <button class="btn btn-success mt-3">
+				        Send Report to Student Email
+				    </button>
+				
+				</form>
+				
             </div>
 
         </div>

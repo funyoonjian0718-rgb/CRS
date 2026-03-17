@@ -181,5 +181,47 @@ public class UserDAO {
         }
 
     }
+    
+ // GET USER BY EMAIL
+    public User getUserByEmail(String email){
+
+        User user = null;
+
+        try{
+            String sql = "SELECT * FROM users WHERE email=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, email);
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                user = new User();
+                user.setUserId(rs.getInt("user_id"));
+                user.setEmail(rs.getString("email"));
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    // UPDATE PASSWORD
+    public void updatePasswordByEmail(String email, String password){
+
+        try{
+            String sql = "UPDATE users SET password=? WHERE email=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, password);
+            ps.setString(2, email);
+
+            ps.executeUpdate();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

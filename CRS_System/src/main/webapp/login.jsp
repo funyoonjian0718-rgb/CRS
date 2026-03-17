@@ -106,9 +106,11 @@
                             <button class="btn btn-primary w-100">
                                 Login
                             </button>
-
+                            
                         </form>
-
+                             <div class="text-center mt-3">
+							    <a href="forgot_password.jsp">Forgot Password?</a>
+							</div>
                     </div>
 
                 </div>
