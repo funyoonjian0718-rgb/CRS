@@ -1,5 +1,11 @@
 <%@ page import="java.util.*,model.Student" %>
 
+<%
+    if(session == null || session.getAttribute("username") == null){
+        response.sendRedirect("login.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 

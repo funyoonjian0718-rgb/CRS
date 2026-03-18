@@ -139,62 +139,22 @@
 
 
             <!-- ============================= -->
-            <!-- RECOVERY PLAN -->
-            <!-- ============================= -->
-
-            <div class="col-md-4">
-
-                <div class="card dashboard-card shadow text-center p-4">
-
-                    <h5 class="mb-3">Create Recovery Plan</h5>
-
-                    <a href="createRecoveryPlan" class="btn btn-info w-100">
-                        Create Recovery Plan
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ============================= -->
-            <!-- UPDATE RECOVERY PLAN -->
-            <!-- ============================= -->
-
-            <div class="col-md-4">
-
-                <div class="card dashboard-card shadow text-center p-4">
-
-                    <h5 class="mb-3">Update Recovery Plan</h5>
-
-                    <a href="updateRecoveryPlan" class="btn btn-secondary w-100">
-                        Update Recovery Plan
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ============================= -->
-            <!-- TRACK RECOVERY PROGRESS -->
-            <!-- ============================= -->
-
-            <div class="col-md-4">
-
-                <div class="card dashboard-card shadow text-center p-4">
-
-                    <h5 class="mb-3">Track Recovery Progress</h5>
-
-                    <a href="trackRecoveryProgress" class="btn btn-dark w-100">
-                        Track Recovery Progress
-                    </a>
-
-                </div>
-
-            </div>
+			<!-- RECOVERY PLAN MANAGEMENT -->
+			<!-- ============================= -->
+			
+			<div class="col-md-4">
+			
+			    <div class="card dashboard-card shadow text-center p-4">
+			
+			        <h5 class="mb-3">Recovery Plans</h5>
+			
+			        <a href="manage_recovery.jsp" class="btn btn-warning w-100">
+			            Manage Recovery Plans
+			        </a>
+			
+			    </div>
+			
+			</div>
 
 
         </div>
